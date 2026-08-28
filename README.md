@@ -1,44 +1,52 @@
 # where-ive-been
 
-A private, native macOS visual journal for Google Maps Timeline exports. where-ive-been turns `location-history.json` into an interactive map, a searchable daily timeline, and long-range travel insights without uploading the file anywhere.
+Your location history is more than a list of coordinates. It is a record of the places you returned to, the roads you took, and how your habits changed over time.
 
-## Highlights
+**where-ive-been** turns a Google Maps Timeline export into a private, visual travel journal for macOS. Open your JSON file and explore your history through maps, routes, timelines, and long-term patterns—all without uploading your data anywhere.
 
-- SwiftUI interface designed specifically for macOS
-- Apple Maps route explorer with year filtering and satellite mode
-- Balanced route rendering across the complete history, including standalone Timeline paths
-- Offline country, state/region, and city enrichment
-- Travel Atlas with geographic maps, rankings, date ranges, and drill-down details
-- Overview dashboard for distance, visits, journeys, and active days
-- Expandable, searchable day-by-day timeline
-- Clickable timeline moments with full route and location detail maps
-- Charts for monthly rhythm, yearly distance, travel modes, and personal records
-- All-years seasonal rankings with total and per-year normalization
-- Year-by-month travel heatmap plus weekday, hourly, streak, average, and median patterns
-- Google export normalization and analytics run entirely on-device
-- Starts with no data and lets each user explicitly choose their own JSON export
+## What you can explore
 
-## Run
+- See your recorded routes on Apple Maps, with year filters and satellite view.
+- Browse a searchable, day-by-day timeline of visits and journeys.
+- Open any timeline entry to inspect its route and location details.
+- Explore the countries, states or regions, and cities in your history.
+- Compare distance, visits, journeys, and active days across years.
+- Discover your busiest months, common travel times, longest streaks, and favorite travel modes.
+- Use the year-by-month heatmap to see how your movement patterns have changed.
 
-Open `Package.swift` in Xcode and press Run, or use:
+Country, region, and city names are matched locally using the bundled GeoNames database. No online geocoding service receives your coordinates.
+
+## Your data stays yours
+
+The app starts empty. It does not include a sample journey, personal location history, or anyone else's travel data.
+
+When you choose a Google Timeline JSON export, **where-ive-been** reads it directly from its original location. The file is never modified, copied into the app, or uploaded to a server. Importing, route processing, geographic matching, and statistics all happen on your Mac.
+
+Apple Maps provides the map imagery, so macOS may request map tiles from Apple while you browse.
+
+## Run from source
+
+You will need macOS 15 or later and Xcode with Swift 6 support.
+
+Open `Package.swift` in Xcode and press Run, or launch it from Terminal:
 
 ```sh
 swift run
 ```
 
-## Build the app bundle
+The app will open with an import screen where you can select your own JSON export.
+
+## Build the macOS app
 
 ```sh
 ./scripts/build-app.sh
 open dist/where-ive-been.app
 ```
 
-The generated app lives at `dist/where-ive-been.app`. It is ad-hoc/local and intended for this Mac. For distribution to other Macs, sign and notarize it with an Apple Developer identity.
+The finished bundle is created at `dist/where-ive-been.app`. This local build is ad-hoc signed and intended for testing. A release for other Macs should be signed with an Apple Developer ID and notarized by Apple.
 
-## Privacy
+## Data source and attribution
 
-No location history, sample journey, personal path, or user identity is included in this repository or the built app. Each installation starts empty and asks the user to import their own Google Timeline JSON export.
+Offline place matching uses the GeoNames `cities5000`, admin-region, and country datasets. GeoNames data is licensed under [Creative Commons Attribution 4.0](https://creativecommons.org/licenses/by/4.0/); full attribution is included with the bundled resources.
 
-The selected source JSON is read-only. Importing, normalization, grouping, and statistics happen locally, and the app does not copy the export into its bundle. The map itself uses Apple Maps tiles.
-
-Place names use the bundled [GeoNames](https://www.geonames.org/) `cities5000`, admin-region, and country extracts under the [Creative Commons Attribution 4.0 license](https://creativecommons.org/licenses/by/4.0/). Geographic matching is approximate to the nearest indexed locality and does not send coordinates to a geocoding server.
+Geographic matches are approximate because coordinates are assigned to the nearest indexed locality.
