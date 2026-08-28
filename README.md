@@ -4,6 +4,9 @@ Your location history is more than a list of coordinates. It is a record of the 
 
 **where-ive-been** turns a Google Maps Timeline export into a private, visual travel journal for macOS. Open your JSON file and explore your history through maps, routes, timelines, and long-term patterns—all without uploading your data anywhere.
 
+<img width="1115" height="827" alt="1" src="https://github.com/user-attachments/assets/2d54e4ac-d5c1-4c25-87cb-1975226df91d" />
+
+
 ## What you can explore
 
 - See your recorded routes on Apple Maps, with year filters and satellite view.
