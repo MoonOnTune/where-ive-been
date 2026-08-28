@@ -1,0 +1,13 @@
+.DS_Store
+.build/
+.swiftpm/
+dist/
+*.xcodeproj/xcuserdata/
+
+# Personal location exports — never commit travel data.
+location-history.json
+location-history-*.json
+Location History/
+Semantic Location History/
+Takeout/
+Records.json
